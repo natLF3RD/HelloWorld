@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flappy_search_bar/flappy_search_bar.dart';
+import 'package:withackathon/suburb_page.dart';
 
 
 class Home extends StatefulWidget {
@@ -24,6 +25,7 @@ class _HomeState extends State<Home> {
     //Color bgColor = data['isDaytime'] ? Colors.blue : Colors.indigo[700];
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    final myController = TextEditingController();
     return Scaffold(
 
       body: Container(
@@ -68,8 +70,8 @@ class _HomeState extends State<Home> {
                               width: width - 50.0,
                               height: 300,
                               child: TextField(
+                                controller: myController,
                                 obscureText: false,
-
                                 decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                     borderRadius: const BorderRadius.all(
@@ -80,11 +82,12 @@ class _HomeState extends State<Home> {
                                   suffixIcon:IconButton(
                                     onPressed: (){
                                       //TODO: Implement this to push to new screen
-                                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => Detail()));
+                                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => Suburb(suburb_name: myController.text,)));
                                     },
                                     color: Colors.black,
                                     icon:Icon(Icons.search),
                                   ),
+
                                 ),
                               ),
                             ),
@@ -256,6 +259,9 @@ class TopHazy extends StatelessWidget {
   }
 }
 
+
+
+
 /*
 import 'dart:math';
 
@@ -356,22 +362,5 @@ class _HomeState extends State<Home> {
   }
 }
 */
-class Detail extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: <Widget>[
-            IconButton(
-              icon: Icon(Icons.arrow_back),
-              onPressed: () => Navigator.of(context).pop(),
-            ),
-            Text("Detail"),
-          ],
-        ),
-      ),
-    );
-  }
-}
+
 
