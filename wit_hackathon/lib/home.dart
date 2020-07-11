@@ -163,7 +163,12 @@ class _HomeState extends State<Home> {
                   width: width,
                   height: 250,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    gradient: LinearGradient(
+                      begin: Alignment.bottomLeft,
+                      end: Alignment.topRight, // 10% of the width, so there are ten blinds.
+                      colors: [Colors.blueAccent, Colors.lightBlueAccent], // whitish to gray
+                      tileMode: TileMode.repeated, // repeats the gradient over the canvas
+                    ),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.grey.withOpacity(0.5),
@@ -199,16 +204,16 @@ class _HomeState extends State<Home> {
                             TopHazy(city: "Sydney", iconName: Icons.directions_run),
                             SizedBox(height: 10.0,),
 
-                            TopHazy(city: "New York", iconName: Icons.directions_run),
+                            TopHazy(city: "New York", iconName: Icons.directions_bike),
                             SizedBox(height: 10.0,),
 
-                            TopHazy(city: "London", iconName: Icons.directions_run),
+                            TopHazy(city: "London", iconName: Icons.directions_boat),
                             SizedBox(height: 10.0,),
 
-                            TopHazy(city: "Tokyo", iconName: Icons.directions_run),
+                            TopHazy(city: "Tokyo", iconName: Icons.directions_bus),
                             SizedBox(height: 10.0,),
 
-                            TopHazy(city: "Berlin", iconName: Icons.directions_run),
+                            TopHazy(city: "Berlin", iconName: Icons.directions_railway),
                             SizedBox(height: 10.0,),
 
                           ],
