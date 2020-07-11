@@ -1,22 +1,17 @@
-
 import 'package:flutter/material.dart';
 import 'package:flappy_search_bar/flappy_search_bar.dart';
-import 'package:flat_icons_flutter/flat_icons_flutter.dart';
-
+//import 'package:flat_icons_flutter/flat_icons_flutter.dart';
 
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
 
-
 class _HomeState extends State<Home> {
-
   //Map data = {};
 
   @override
   Widget build(BuildContext context) {
-
     //data = data.isNotEmpty ? data : ModalRoute.of(context).settings.arguments;
     //print(data);
 
@@ -26,78 +21,67 @@ class _HomeState extends State<Home> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-
       body: Container(
-
         child: Stack(
           children: <Widget>[
-
             Container(
               decoration: BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage("assets/images/sydney_map.JPG"),
-                      fit: BoxFit.cover
-                  )
-              ),
+                      fit: BoxFit.cover)),
             ),
-
             Align(
-
               alignment: Alignment.bottomCenter,
               child: ClipRRect(
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20.0),
-                    topRight: Radius.circular(20.0)
-                ),
+                    topRight: Radius.circular(20.0)),
                 child: Container(
                   width: width,
                   height: 400,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.bottomLeft,
-                      end: Alignment.topRight, // 10% of the width, so there are ten blinds.
-                      colors: [Colors.blue, Colors.tealAccent], // whitish to gray
-                      tileMode: TileMode.repeated, // repeats the gradient over the canvas
+                      end: Alignment
+                          .topRight, // 10% of the width, so there are ten blinds.
+                      colors: [
+                        Colors.blue,
+                        Colors.tealAccent
+                      ], // whitish to gray
+                      tileMode: TileMode
+                          .repeated, // repeats the gradient over the canvas
                     ),
                   ),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      Flexible (
+                      Flexible(
                           child: Center(
-                            child: Container(
-                              width: width - 50.0,
-                              height: 300,
-                              child: TextField(
-                                obscureText: false,
-
-                                decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                    borderRadius: const BorderRadius.all(
-                                      const Radius.circular(30.0),
-                                    ),
-                                  ),
-                                  labelText: 'Search Suburb ',
-                                  suffixIcon:IconButton(
-                                    onPressed: (){
-                                      //TODO: Implement this to push to new screen
-                                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => Detail()));
-                                    },
-                                    color: Colors.black,
-                                    icon:Icon(Icons.search),
-                                  ),
+                        child: Container(
+                          width: width - 50.0,
+                          height: 300,
+                          child: TextField(
+                            obscureText: false,
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: const BorderRadius.all(
+                                  const Radius.circular(30.0),
                                 ),
                               ),
+                              labelText: 'Search Suburb ',
+                              suffixIcon: IconButton(
+                                onPressed: () {
+                                  //TODO: Implement this to push to new screen
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => Detail()));
+                                },
+                                color: Colors.black,
+                                icon: Icon(Icons.search),
+                              ),
                             ),
-                          )
-                      ),
-
-
-
-
-
-
-
+                          ),
+                        ),
+                      )),
                     ],
                   ),
 
@@ -151,23 +135,26 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
-
             Align(
               alignment: Alignment.bottomCenter,
               child: ClipRRect(
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20.0),
-                    topRight: Radius.circular(20.0)
-                ),
+                    topRight: Radius.circular(20.0)),
                 child: Container(
                   width: width,
                   height: 250,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.bottomLeft,
-                      end: Alignment.topRight, // 10% of the width, so there are ten blinds.
-                      colors: [Colors.blueAccent, Colors.lightBlueAccent], // whitish to gray
-                      tileMode: TileMode.repeated, // repeats the gradient over the canvas
+                      end: Alignment
+                          .topRight, // 10% of the width, so there are ten blinds.
+                      colors: [
+                        Colors.blueAccent,
+                        Colors.lightBlueAccent
+                      ], // whitish to gray
+                      tileMode: TileMode
+                          .repeated, // repeats the gradient over the canvas
                     ),
                     boxShadow: [
                       BoxShadow(
@@ -180,16 +167,20 @@ class _HomeState extends State<Home> {
                   ),
                   child: Column(
                     children: <Widget>[
-                      SizedBox(height: 12.0,),
+                      SizedBox(
+                        height: 12.0,
+                      ),
                       Text(
                         "Top 5 Hazy Suburbs",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 24.0,
-                          color: Colors.black,
+                          color: Colors.white,
                         ),
                       ),
-                      SizedBox(height: 20.0,),
+                      SizedBox(
+                        height: 20.0,
+                      ),
                       Container(
                         width: width,
                         height: 170,
@@ -197,25 +188,26 @@ class _HomeState extends State<Home> {
                           //TODO: Make These clickable
                           padding: const EdgeInsets.all(8),
                           children: <Widget>[
-                            Container(
-                              width: width,
-                              height: 20,
+                            TopHazy(city: "Pyrmont", ppm: 20.0),
+                            SizedBox(
+                              height: 10.0,
                             ),
-                            TopHazy(city: "Sydney", iconName: Icons.directions_run),
-                            SizedBox(height: 10.0,),
-
-                            TopHazy(city: "New York", iconName: Icons.directions_bike),
-                            SizedBox(height: 10.0,),
-
-                            TopHazy(city: "London", iconName: Icons.directions_boat),
-                            SizedBox(height: 10.0,),
-
-                            TopHazy(city: "Tokyo", iconName: Icons.directions_bus),
-                            SizedBox(height: 10.0,),
-
-                            TopHazy(city: "Berlin", iconName: Icons.directions_railway),
-                            SizedBox(height: 10.0,),
-
+                            TopHazy(city: "Sydney", ppm: 19.1),
+                            SizedBox(
+                              height: 10.0,
+                            ),
+                            TopHazy(city: "Kingsford", ppm: 15.6),
+                            SizedBox(
+                              height: 10.0,
+                            ),
+                            TopHazy(city: "Kensington", ppm: 14.9),
+                            SizedBox(
+                              height: 10.0,
+                            ),
+                            TopHazy(city: "Ultimo", ppm: 13.0),
+                            SizedBox(
+                              height: 10.0,
+                            ),
                           ],
                         ),
                       )
@@ -224,48 +216,67 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
-
-
           ],
-
-
-
-
         ),
       ),
-
     );
   }
 }
 
 class TopHazy extends StatelessWidget {
   String city;
-  IconData iconName;
-  TopHazy({this.city, this.iconName});
+  double ppm;
+  TopHazy({this.city, this.ppm});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: Colors.lightBlueAccent,
-        borderRadius: BorderRadius.all(Radius.circular(20.0),),
-      ),
-      height: 50,
-      //color: Colors.amber[600],
-      child:  Center(
-        child: FlatButton.icon(
-            onPressed: (){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => Detail()));
-            },
-            icon: Icon(iconName),
-            label: Text(city,
-                    style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 20.0
-            ))
+        decoration: BoxDecoration(
+          color: Colors.lightBlueAccent,
+          borderRadius: BorderRadius.all(
+            Radius.circular(20.0),
+          ),
+        ),
+        height: 50,
+        //color: Colors.amber[600],
+        child: GestureDetector (
+          onTap: () {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => Detail()));
+          },
+          child: Padding(
+            padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+//                FlatButton.icon(
+//                  onPressed: () {
+//                    Navigator.of(context).push(
+//                        MaterialPageRoute(builder: (context) => Detail()));
+//                  },
+////                  icon: Icon(iconName),
+//                  label: Text(city,
+//                      style: TextStyle(
+//                          color: Colors.white,
+//                          fontWeight: FontWeight.bold,
+//                          fontSize: 20.0
+//                      )),
+//
+//                ),
+                  Text(city,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.0)),
+                  Text(ppm.toString() + "ppm",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.0)),
+                ]
+            ),
+          ),
         )
-      )
     );
   }
 }
@@ -388,4 +399,3 @@ class Detail extends StatelessWidget {
     );
   }
 }
-
