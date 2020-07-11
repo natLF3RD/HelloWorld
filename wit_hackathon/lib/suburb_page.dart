@@ -14,16 +14,29 @@ class Suburb extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     DateTime now = DateTime.now();
     String formattedDate =  DateFormat('EEEE - dd-MM-yyyy').format(now);
+    String currentTimeHours = DateFormat('kk:mm').format(now);
     return Scaffold(
       appBar: AppBar(
         title: Text(suburb_name),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                  stops: [
+                  0.1,
+                  0.7,
+                ],
+                colors: [Colors.yellow, Colors.orange], // whitish to gray
+                tileMode: TileMode.repeated,
+              ),// repeats the gradient over the canvas
+          ),
+        ),
       ),
+
       body: SafeArea(
         child: Column(
           children: <Widget>[
-
-
-
 
             SizedBox(height: 10.0,),
 
@@ -93,7 +106,7 @@ class Suburb extends StatelessWidget {
                         ],
                       ),
                       child: Card(
-                        color: Colors.redAccent,
+                        color: Colors.red,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15.0),
                         ),
@@ -101,12 +114,22 @@ class Suburb extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
+                            Text(
+                              "WARNING",
+                              style: TextStyle(
+                                fontSize: 30.0,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
 
                               children: <Widget>[
+
+
                                 Text(
-                                  "10",
+                                  "80",
                                   style: TextStyle(
                                     fontSize: 50.0,
                                     color: Colors.white,
@@ -144,70 +167,107 @@ class Suburb extends StatelessWidget {
                       ),
 
                     ),
-
-                Container(
-                  width: width / 2  - 20,
-                  height: width / 2  - 20,
-                  decoration: new BoxDecoration(
-                    boxShadow: [
-                      new BoxShadow(
-                        color: Colors.grey[300],
-                        blurRadius: 10.0,
-                      ),
-                    ],
-
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
                   ),
-                  child: Card(
-
-                    //color: Colors.orange,
-                    shape: RoundedRectangleBorder(
+                  child: Container(
+                    width: width / 2  - 26,
+                    height: width / 2  - 26,
+                    decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15.0),
+                      gradient: LinearGradient(
+                        begin: Alignment.bottomRight,
+                        end: Alignment.topLeft,
+                        stops: [
+                          0.1,
+                          0.7,
+                        ],
+                        colors: [Colors.yellow, Colors.orange], // whitish to gray
+                        tileMode: TileMode.repeated, // repeats the gradient over the canvas
+                      ),
+                      boxShadow: [
+                        new BoxShadow(
+                          color: Colors.grey[300],
+                          blurRadius: 10.0,
+                        ),
+                      ],
                     ),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(
-                            'sun.png',
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          suburb_name,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 24.0,
+                            fontWeight: FontWeight.bold,
                           ),
-                          fit: BoxFit.fitWidth,
-                          alignment: Alignment.topCenter,
+                        ),
+                        SizedBox(height: 5,),
+                        Text(
+                          "Updated $currentTimeHours",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 10.0,
+                            fontWeight: FontWeight.normal,
+                          ),
                         ),
 
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-
-
-                          Container(
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                colors: [Colors.yellow, Colors.orange], // whitish to gray
-                                tileMode: TileMode.repeated, // repeats the gradient over the canvas
+                        SizedBox(height: 15,),
+                        Row(
+                          children: <Widget>[
+                            SizedBox(width: 10.0,),
+                            Icon(
+                              Icons.wb_sunny,
+                              color: Colors.white,
+                              size:40.0
+                            ),
+                            SizedBox(width: 20.0,),
+                            Text(
+                              "27°",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 24.0,
                               ),
                             ),
-                          ),
-
-                          Text(
-                            "27",
-                            style: TextStyle(
-                              fontSize: 27.0,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
+                            SizedBox(width: 10.0,),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  "max   32°",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 10.0,
+                                  ),
+                                ),
+                                SizedBox(height: 2.0,),
+                                Text(
+                                  "min   25°",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 10.0,
+                                  ),
+                                ),
+                              ],
                             ),
+
+                          ],
+                        ),
+                        SizedBox(height: 10.0,),
+                        Text(
+                          "Very Sunny",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18.0,
                           ),
+                        )
 
-
-
-                        ],
-                      ),
-                    ),
-
-
-                  ),
-
+                      ],
+                    )
+                  )
                 ),
 
 
@@ -270,8 +330,8 @@ class Suburb extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(15.0),
 
                                   child: Image.asset(
-                                    'assets/images/happy_face_white.jpg',
-                                    fit: BoxFit.cover,
+                                    'assets/images/home2.png',
+                                    fit: BoxFit.contain,
                                   ),),
 
                               )
@@ -297,8 +357,8 @@ class Suburb extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(15.0),
 
                                   child: Image.asset(
-                                    'assets/images/medium_face_white.jpg',
-                                    fit: BoxFit.cover,
+                                    'assets/images/mask.png',
+                                    fit: BoxFit.contain,
                                   ),),
 
                               )
@@ -324,8 +384,8 @@ class Suburb extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(15.0),
 
                                   child: Image.asset(
-                                    'assets/images/sad_face_red.jpg',
-                                    fit: BoxFit.scaleDown,
+                                    'assets/images/asthma.png',
+                                    fit: BoxFit.contain,
                                   ),),
 
                               )
@@ -392,7 +452,7 @@ Widget sample3(BuildContext context) {
               DataPoint<DateTime>(value: 50, xAxis: date4),
               DataPoint<DateTime>(value: 10, xAxis: date5),
               DataPoint<DateTime>(value: 50, xAxis: date6),
-              DataPoint<DateTime>(value: 10, xAxis: date7),
+              DataPoint<DateTime>(value: 80, xAxis: date7),
               DataPoint<DateTime>(value: 50, xAxis: date8),
               DataPoint<DateTime>(value: 10, xAxis: date9),
               DataPoint<DateTime>(value: 50, xAxis: date10),
@@ -475,3 +535,4 @@ class Graph extends StatelessWidget {
     );
   }
 }
+
