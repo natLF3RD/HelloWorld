@@ -1,7 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:flappy_search_bar/flappy_search_bar.dart';
 import 'package:withackathon/suburb_page.dart';
+
 
 
 class Home extends StatefulWidget {
@@ -9,14 +9,11 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
-
 class _HomeState extends State<Home> {
-
   //Map data = {};
 
   @override
   Widget build(BuildContext context) {
-
     //data = data.isNotEmpty ? data : ModalRoute.of(context).settings.arguments;
     //print(data);
 
@@ -27,29 +24,21 @@ class _HomeState extends State<Home> {
     double height = MediaQuery.of(context).size.height;
     final myController = TextEditingController();
     return Scaffold(
-
       body: Container(
-
         child: Stack(
           children: <Widget>[
-
             Container(
               decoration: BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage("assets/images/sydney_map.JPG"),
-                      fit: BoxFit.cover
-                  )
-              ),
+                      fit: BoxFit.cover)),
             ),
-
             Align(
-
               alignment: Alignment.bottomCenter,
               child: ClipRRect(
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20.0),
-                    topRight: Radius.circular(20.0)
-                ),
+                    topRight: Radius.circular(20.0)),
                 child: Container(
                   width: width,
                   height: 400,
@@ -57,22 +46,29 @@ class _HomeState extends State<Home> {
                     gradient: LinearGradient(
                       begin: Alignment.bottomLeft,
                       end: Alignment.topRight, // 10% of the width, so there are ten blinds.
-                      colors: [Colors.blue, Colors.tealAccent], // whitish to gray
-                      tileMode: TileMode.repeated, // repeats the gradient over the canvas
+                      colors: [
+                        Colors.blue,
+                        Colors.tealAccent
+                      ], // whitish to gray
+                      tileMode: TileMode
+                          .repeated, // repeats the gradient over the canvas
                     ),
                   ),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      Flexible (
+                      Flexible(
                           child: Center(
                             child: Container(
                               width: width - 50.0,
                               height: 300,
+
                               child: TextField(
                                 controller: myController,
                                 obscureText: false,
                                 decoration: InputDecoration(
+                                  fillColor: Colors.white,
+                                  filled: true,
                                   border: OutlineInputBorder(
                                     borderRadius: const BorderRadius.all(
                                       const Radius.circular(30.0),
@@ -88,79 +84,21 @@ class _HomeState extends State<Home> {
                                     icon:Icon(Icons.search),
                                   ),
 
-                                ),
-                              ),
-                            ),
-                          )
-                      ),
 
-
-
-
-
-
-
-                    ],
+                      )),
+                   ),),) ],
                   ),
-
-                  /*child: Row(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(left: 0.0),
-                        child: Column(
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.only(left: 12.0, top: 20.0),
-                              child: Text(
-                                'Update Your Profile',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 22.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 10.0,),
-                            Text(
-                              "How Do I Update my profile?",
-                              style: TextStyle(
-                                color: Colors.white,
-                              ),
-                            ),
-                            SizedBox(height: 10.0,),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 65.0),
-                              child: FlatButton(
-                                onPressed: () {},
-                                color: Colors.white,
-                                textColor: Colors.black,
-                                child: Text(
-                                  "     Update    ",
-                                ),
-                              ),
-                            ),
-
-
-                          ],
-                        ),
-                      ),
-
-                    ],
-                  ),
-                  */
 
                   //color: Colors.blue[700],
                 ),
               ),
             ),
-
             Align(
               alignment: Alignment.bottomCenter,
               child: ClipRRect(
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20.0),
-                    topRight: Radius.circular(20.0)
-                ),
+                    topRight: Radius.circular(20.0)),
                 child: Container(
                   width: width,
                   height: 250,
@@ -177,16 +115,20 @@ class _HomeState extends State<Home> {
                   ),
                   child: Column(
                     children: <Widget>[
-                      SizedBox(height: 12.0,),
+                      SizedBox(
+                        height: 12.0,
+                      ),
                       Text(
                         "Top 5 Hazy Suburbs",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 24.0,
-                          color: Colors.black,
+                          color: Colors.lightBlueAccent,
                         ),
                       ),
-                      SizedBox(height: 20.0,),
+                      SizedBox(
+                        height: 20.0,
+                      ),
                       Container(
                         width: width,
                         height: 170,
@@ -194,21 +136,26 @@ class _HomeState extends State<Home> {
                           //TODO: Make These clickable
                           padding: const EdgeInsets.all(8),
                           children: <Widget>[
-                            TopHazy(city: "Sydney"),
-                            SizedBox(height: 10.0,),
-
-                            TopHazy(city: "New York"),
-                            SizedBox(height: 10.0,),
-
-                            TopHazy(city: "London"),
-                            SizedBox(height: 10.0,),
-
-                            TopHazy(city: "Tokyo"),
-                            SizedBox(height: 10.0,),
-
-                            TopHazy(city: "Berlin"),
-                            SizedBox(height: 10.0,),
-
+                            TopHazy(city: "Pyrmont", ppm: 20.0),
+                            SizedBox(
+                              height: 10.0,
+                            ),
+                            TopHazy(city: "Sydney", ppm: 19.1),
+                            SizedBox(
+                              height: 10.0,
+                            ),
+                            TopHazy(city: "Kingsford", ppm: 15.6),
+                            SizedBox(
+                              height: 10.0,
+                            ),
+                            TopHazy(city: "Kensington", ppm: 14.9),
+                            SizedBox(
+                              height: 10.0,
+                            ),
+                            TopHazy(city: "Ultimo", ppm: 13.0),
+                            SizedBox(
+                              height: 10.0,
+                            ),
                           ],
                         ),
                       )
@@ -217,44 +164,67 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
-
-
           ],
-
-
-
-
         ),
       ),
-
     );
   }
 }
 
 class TopHazy extends StatelessWidget {
   String city;
-  TopHazy({this.city});
-
+  double ppm;
+  TopHazy({this.city, this.ppm});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: Colors.red,
-        borderRadius: BorderRadius.all(Radius.circular(20.0),),
-      ),
-      height: 50,
-      //color: Colors.amber[600],
-      child:  Center(
-          child: Text(
-            city,
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 20.0
-            )
-          )
-      ),
+        decoration: BoxDecoration(
+          color: Colors.lightBlueAccent,
+          borderRadius: BorderRadius.all(
+            Radius.circular(20.0),
+          ),
+        ),
+        height: 50,
+        //color: Colors.amber[600],
+        child: InkWell (
+          onTap: () {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => Suburb(suburb_name: city)));
+          },
+          child: Padding(
+            padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+//                FlatButton.icon(
+//                  onPressed: () {
+//                    Navigator.of(context).push(
+//                        MaterialPageRoute(builder: (context) => Detail()));
+//                  },
+////                  icon: Icon(iconName),
+//                  label: Text(city,
+//                      style: TextStyle(
+//                          color: Colors.white,
+//                          fontWeight: FontWeight.bold,
+//                          fontSize: 20.0
+//                      )),
+//
+//                ),
+                  Text(city,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.0)),
+                  Text(ppm.toString() + "ppm",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.0)),
+                ]
+            ),
+          ),
+        )
     );
   }
 }
@@ -362,5 +332,3 @@ class _HomeState extends State<Home> {
   }
 }
 */
-
-
