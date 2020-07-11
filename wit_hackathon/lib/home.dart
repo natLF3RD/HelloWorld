@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flappy_search_bar/flappy_search_bar.dart';
+import 'package:flat_icons_flutter/flat_icons_flutter.dart';
 
 
 class Home extends StatefulWidget {
@@ -237,7 +238,7 @@ class TopHazy extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.red,
+        color: Colors.lightBlueAccent,
         borderRadius: BorderRadius.all(Radius.circular(20.0),),
       ),
       height: 50,
