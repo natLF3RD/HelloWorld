@@ -192,19 +192,23 @@ class _HomeState extends State<Home> {
                           //TODO: Make These clickable
                           padding: const EdgeInsets.all(8),
                           children: <Widget>[
-                            TopHazy(city: "Sydney"),
+                            Container(
+                              width: width,
+                              height: 20,
+                            ),
+                            TopHazy(city: "Sydney", iconName: Icons.directions_run),
                             SizedBox(height: 10.0,),
 
-                            TopHazy(city: "New York"),
+                            TopHazy(city: "New York", iconName: Icons.directions_run),
                             SizedBox(height: 10.0,),
 
-                            TopHazy(city: "London"),
+                            TopHazy(city: "London", iconName: Icons.directions_run),
                             SizedBox(height: 10.0,),
 
-                            TopHazy(city: "Tokyo"),
+                            TopHazy(city: "Tokyo", iconName: Icons.directions_run),
                             SizedBox(height: 10.0,),
 
-                            TopHazy(city: "Berlin"),
+                            TopHazy(city: "Berlin", iconName: Icons.directions_run),
                             SizedBox(height: 10.0,),
 
                           ],
@@ -231,8 +235,8 @@ class _HomeState extends State<Home> {
 
 class TopHazy extends StatelessWidget {
   String city;
-  TopHazy({this.city});
-
+  IconData iconName;
+  TopHazy({this.city, this.iconName});
 
   @override
   Widget build(BuildContext context) {
@@ -244,15 +248,19 @@ class TopHazy extends StatelessWidget {
       height: 50,
       //color: Colors.amber[600],
       child:  Center(
-          child: Text(
-            city,
-            style: TextStyle(
+        child: FlatButton.icon(
+            onPressed: (){
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => Detail()));
+            },
+            icon: Icon(iconName),
+            label: Text(city,
+                    style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
               fontSize: 20.0
-            )
-          )
-      ),
+            ))
+        )
+      )
     );
   }
 }
