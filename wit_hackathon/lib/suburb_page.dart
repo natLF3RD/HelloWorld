@@ -17,7 +17,13 @@ class Suburb extends StatelessWidget {
     String currentTimeHours = DateFormat('kk:mm').format(now);
     return Scaffold(
       appBar: AppBar(
-        title: Text(suburb_name),
+        title: Text(
+          suburb_name,
+          style: TextStyle(
+            fontFamily: "Montserrat",
+          ),
+
+        ),
         flexibleSpace: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -27,7 +33,7 @@ class Suburb extends StatelessWidget {
                   0.1,
                   0.7,
                 ],
-                colors: [Colors.yellow, Colors.orange], // whitish to gray
+                colors: [Colors.red, Colors.orange], // whitish to gray
                 tileMode: TileMode.repeated,
               ),// repeats the gradient over the canvas
           ),
@@ -69,14 +75,16 @@ class Suburb extends StatelessWidget {
                             'Daily Smoke Quality Index',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontSize: 20.0
+                              fontSize: 20.0,
+                              fontFamily: "Montserrat",
                             ),
                           ),
                           Text(
                             '$formattedDate',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontSize: 12.0
+                                fontSize: 12.0,
+                              fontFamily: "Montserrat",
                             ),
                           ),
                           Flexible(child: sample3(context)),
@@ -120,6 +128,7 @@ class Suburb extends StatelessWidget {
                                 fontSize: 30.0,
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
+                                fontFamily: "Montserrat",
                               ),
                             ),
                             Row(
@@ -134,6 +143,7 @@ class Suburb extends StatelessWidget {
                                     fontSize: 50.0,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
+                                    fontFamily: "Montserrat",
                                   ),
                                 ),
 
@@ -145,6 +155,7 @@ class Suburb extends StatelessWidget {
                                       fontSize: 20.0,
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
+                                      fontFamily: "Montserrat",
                                     ),
                                   ),
                                 ),
@@ -156,9 +167,10 @@ class Suburb extends StatelessWidget {
                             Text(
                               "Severe Air Quality",
                               style: TextStyle(
-                                fontSize: 18.0,
+                                fontSize: 16.0,
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
+                                fontFamily: "Montserrat",
                               ),
                             ),
 
@@ -183,7 +195,7 @@ class Suburb extends StatelessWidget {
                           0.1,
                           0.7,
                         ],
-                        colors: [Colors.yellow, Colors.orange], // whitish to gray
+                        colors: [Colors.red, Colors.orange], // whitish to gray
                         tileMode: TileMode.repeated, // repeats the gradient over the canvas
                       ),
                       boxShadow: [
@@ -203,6 +215,7 @@ class Suburb extends StatelessWidget {
                             color: Colors.white,
                             fontSize: 24.0,
                             fontWeight: FontWeight.bold,
+                            fontFamily: "Montserrat",
                           ),
                         ),
                         SizedBox(height: 5,),
@@ -212,6 +225,7 @@ class Suburb extends StatelessWidget {
                             color: Colors.white,
                             fontSize: 10.0,
                             fontWeight: FontWeight.normal,
+                            fontFamily: "Montserrat",
                           ),
                         ),
 
@@ -230,6 +244,7 @@ class Suburb extends StatelessWidget {
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 24.0,
+                                fontFamily: "Montserrat",
                               ),
                             ),
                             SizedBox(width: 10.0,),
@@ -241,6 +256,7 @@ class Suburb extends StatelessWidget {
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 10.0,
+                                    fontFamily: "Montserrat",
                                   ),
                                 ),
                                 SizedBox(height: 2.0,),
@@ -249,6 +265,7 @@ class Suburb extends StatelessWidget {
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 10.0,
+                                    fontFamily: "Montserrat",
                                   ),
                                 ),
                               ],
@@ -262,6 +279,7 @@ class Suburb extends StatelessWidget {
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 18.0,
+                            fontFamily: "Montserrat",
                           ),
                         )
 
@@ -303,6 +321,7 @@ class Suburb extends StatelessWidget {
                           "Recommendations",
                         style: TextStyle(
                           fontSize: 20.0,
+                          fontFamily: "Montserrat",
                         ),
                       ),
 

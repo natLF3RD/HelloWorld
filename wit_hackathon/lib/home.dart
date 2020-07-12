@@ -24,14 +24,50 @@ class _HomeState extends State<Home> {
     double height = MediaQuery.of(context).size.height;
     final myController = TextEditingController();
     return Scaffold(
-      body: Container(
+        resizeToAvoidBottomInset: false,
+        body: Container(
         child: Stack(
           children: <Widget>[
             Container(
               decoration: BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage("assets/images/sydney_map.JPG"),
-                      fit: BoxFit.cover)),
+                      fit: BoxFit.cover)
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Flexible(
+                    child: Center(
+                      child: Container(
+                        width: width - 50.0,
+                        height: 300,
+
+                        child: TextField(
+                            controller: myController,
+                            obscureText: false,
+                            decoration: InputDecoration(
+                              fillColor: Colors.white,
+                              filled: true,
+                              border: OutlineInputBorder(
+                                borderRadius: const BorderRadius.all(
+                                  const Radius.circular(30.0),
+                                ),
+                              ),
+                              labelText: 'Check Suburb Smoke Level ',
+                              suffixIcon:IconButton(
+                                onPressed: (){
+                                  //TODO: Implement this to push to new screen
+                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => Suburb(suburb_name: myController.text,)));
+                                },
+                                color: Colors.black,
+                                icon:Icon(Icons.search),
+                              ),
+
+
+                            )),
+                      ),),) ],
+              ),
             ),
             Align(
               alignment: Alignment.bottomCenter,
@@ -54,40 +90,7 @@ class _HomeState extends State<Home> {
                           .repeated, // repeats the gradient over the canvas
                     ),
                   ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Flexible(
-                          child: Center(
-                            child: Container(
-                              width: width - 50.0,
-                              height: 300,
 
-                              child: TextField(
-                                controller: myController,
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  fillColor: Colors.white,
-                                  filled: true,
-                                  border: OutlineInputBorder(
-                                    borderRadius: const BorderRadius.all(
-                                      const Radius.circular(30.0),
-                                    ),
-                                  ),
-                                  labelText: 'Search Suburb ',
-                                  suffixIcon:IconButton(
-                                    onPressed: (){
-                                      //TODO: Implement this to push to new screen
-                                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => Suburb(suburb_name: myController.text,)));
-                                    },
-                                    color: Colors.black,
-                                    icon:Icon(Icons.search),
-                                  ),
-
-
-                      )),
-                   ),),) ],
-                  ),
 
                   //color: Colors.blue[700],
                 ),
@@ -101,9 +104,17 @@ class _HomeState extends State<Home> {
                     topRight: Radius.circular(20.0)),
                 child: Container(
                   width: width,
-                  height: 250,
+                  height: 400,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    gradient: LinearGradient(
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft,
+                      stops: [
+                        0.1,
+                        0.7,
+                      ],
+                      colors: [Colors.red, Colors.orange],
+                    ),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.grey.withOpacity(0.5),
@@ -116,43 +127,44 @@ class _HomeState extends State<Home> {
                   child: Column(
                     children: <Widget>[
                       SizedBox(
-                        height: 12.0,
+                        height: 20.0,
                       ),
                       Text(
                         "Top 5 Hazy Suburbs",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 24.0,
-                          color: Colors.lightBlueAccent,
+                          color: Colors.white,
+                          fontFamily: "Montserrat",
                         ),
                       ),
                       SizedBox(
-                        height: 20.0,
+                        height: 19.0,
                       ),
                       Container(
                         width: width,
-                        height: 170,
+                        height: 330,
                         child: ListView(
                           //TODO: Make These clickable
                           padding: const EdgeInsets.all(8),
                           children: <Widget>[
-                            TopHazy(city: "Pyrmont", ppm: 20.0),
+                            TopHazy(city: "Pyrmont", ppm: 80.0),
                             SizedBox(
                               height: 10.0,
                             ),
-                            TopHazy(city: "Sydney", ppm: 19.1),
+                            TopHazy(city: "Sydney", ppm: 79.1),
                             SizedBox(
                               height: 10.0,
                             ),
-                            TopHazy(city: "Kingsford", ppm: 15.6),
+                            TopHazy(city: "Kingsford", ppm: 69),
                             SizedBox(
                               height: 10.0,
                             ),
-                            TopHazy(city: "Kensington", ppm: 14.9),
+                            TopHazy(city: "Kensington", ppm: 54.9),
                             SizedBox(
                               height: 10.0,
                             ),
-                            TopHazy(city: "Ultimo", ppm: 13.0),
+                            TopHazy(city: "Wooloomooloo", ppm: 42),
                             SizedBox(
                               height: 10.0,
                             ),
@@ -180,10 +192,18 @@ class TopHazy extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
-          color: Colors.lightBlueAccent,
+          color: Colors.white,
           borderRadius: BorderRadius.all(
             Radius.circular(20.0),
           ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.red.withOpacity(0.4),
+              spreadRadius: 2,
+              blurRadius: 5,
+              offset: Offset(0, 3), // changes position of shadow
+            ),
+          ],
         ),
         height: 50,
         //color: Colors.amber[600],
@@ -193,7 +213,7 @@ class TopHazy extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => Suburb(suburb_name: city)));
           },
           child: Padding(
-            padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+            padding: const EdgeInsets.only(left: 20.0, right: 20.0),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -213,14 +233,21 @@ class TopHazy extends StatelessWidget {
 //                ),
                   Text(city,
                       style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.orange,
                           fontWeight: FontWeight.bold,
-                          fontSize: 20.0)),
+                          fontSize: 20.0,
+                        fontFamily: "Montserrat",
+                      ),
+
+                  ),
                   Text(ppm.toString() + "ppm",
                       style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.orange,
                           fontWeight: FontWeight.bold,
-                          fontSize: 20.0)),
+                          fontSize: 20.0,
+                        fontFamily: "Montserrat",
+                      ),
+                  ),
                 ]
             ),
           ),
