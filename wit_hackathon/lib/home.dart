@@ -10,12 +10,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  //Map data = {};
 
   @override
   Widget build(BuildContext context) {
     //data = data.isNotEmpty ? data : ModalRoute.of(context).settings.arguments;
     //print(data);
+
+
 
     //set background
     //String bgImage = data['isDaytime'] ? 'day.png' : 'night.png';
